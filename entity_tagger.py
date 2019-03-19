@@ -1,19 +1,49 @@
 from collections import namedtuple
-import spacy
-nlp = spacy.load('en')
 
 Tag = namedtuple('EntityTag', ['entity', 'label'])
 
+class SpacyTagger:
 
-def spacy_tagger(text):
-    parsed = nlp(text)
-    tags = []
-    for ent in parsed.ents:
-        tags.append(Tag(str(ent).strip(), ent.label_))
+    def __init__(self):
+        import spacy
+        self.nlp = spacy.load('en')
 
-    return tags
+    def tag(self, text):
+        parsed = self.nlp(text)
+        tags = []
+        for ent in parsed.ents:
+            tags.append(Tag(str(ent).strip(), ent.label_))
+
+        return tags
+
+class BERTTagger:
+
+    def __init__(self):
+        print("Initializng Tagger")
+        print("This might take a while")
+        from model.bert import Ner
+        self.model = Ner("./model/saved_model/")
+
+    def tag(self, text):
+        prediction = self.model.predict(text)
+        tags = []
+        current_tag = []
+        for ent, pred in prediction.items():
+            tag = pred['tag']
+            if tag == 'O':
+                continue
+            elif tag[0] == 'B':
+                tags.append(current_tag)
+                current_tag = [ent, tag[2:]]
+            elif tag[0] == 'I':
+                current_tag[0] += " " + ent
+
+        tags.append(current_tag)
+
+        tags = [Tag(x[0], x[1]) for x in tags[1:]]
+
+        return tags
 
 
-def custom_tagger(text):
-    # Should return a list of Tags
-    raise NotImplementedError
+    def __call__(self, text):
+        return self.tag(text)
