@@ -22,3 +22,8 @@ tqdm==4.31.1
 ujson==1.35
 urllib3==1.24.1
 wrapt==1.10.11
+pytorch-pretrained-bert==0.6.1
+seqeval==0.0.5
+torch==1.0.1.post2
+tqdm==4.31.1
+nltk==3.4
