@@ -1,6 +1,6 @@
 import re
 from collections import defaultdict
-from entity_tagger import spacy_tagger
+from entity_tagger import SpacyTagger, BERTTagger
 from utils import read_text
 
 
@@ -8,7 +8,7 @@ class Parser:
 
     def __init__(self, tagger=None):
         self.data = {}
-        self.tagger = tagger or spacy_tagger
+        self.tagger = tagger or BERTTagger()
 
     @staticmethod
     def get_sections(text):
@@ -54,7 +54,6 @@ class Parser:
         data['education'] = self.get_education(sections['education'])
         data['experience'] = self.get_experience(sections['experience'])
         data['skills'] = self.get_skills(sections['skills'])
-
         return data
 
     def parse_file(self, path):
@@ -70,7 +69,7 @@ class Parser:
 
     def get_city(self, text):
         tags = self.tagger(text)
-        gpes = [x.entity for x in tags if x.label == 'GPE' and x.entity != '']
+        gpes = [x.entity for x in tags if x.label in ['GPE', 'LOC'] and x.entity != '']
 
         return gpes
 
