@@ -16,6 +16,10 @@ class SpacyTagger:
 
         return tags
 
+    def __call__(self, text):
+        return self.tag(text)
+
+
 class BERTTagger:
 
     def __init__(self):
@@ -43,7 +47,6 @@ class BERTTagger:
         tags = [Tag(x[0], x[1]) for x in tags[1:]]
 
         return tags
-
 
     def __call__(self, text):
         return self.tag(text)
