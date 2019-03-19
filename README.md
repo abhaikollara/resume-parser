@@ -10,10 +10,13 @@ cd resume-parser
 pip install -r requirements.txt`
 ```
 
+Obtain the trained model from [here](http://bit.ly/2TSxl4Y)
+Extract the contents and place the `saved_model` folder inside the `model` directory
+
 ## Usage
 ```
 python run.py myResume.pdf
 ```
 
 ## TODO:
- - Write a custom model for named entity recognition, currently using spacy.
+ - ~Write a custom model for named entity recognition, currently using spacy.~
