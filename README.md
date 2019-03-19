@@ -4,7 +4,11 @@ Extract information from resumes. Currently only tested on PDF format.
 Install [Apache Tika](https://tika.apache.org/download.html) before proceeding.
 
 Then run
-`pip install -r requirements.txt`
+```
+git clone --recurse-submodules git@github.com:abhaikollara/resume-parser.git
+cd resume-parser
+pip install -r requirements.txt`
+```
 
 ## Usage
 ```
