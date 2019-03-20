@@ -5,7 +5,6 @@ from utils import read_text
 from parser import Parser
 
 
-
 def main():
     try:
         path = sys.argv[1]

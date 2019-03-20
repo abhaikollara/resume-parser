@@ -23,8 +23,8 @@ class Parser:
         section_name = "intro"
         for line in text:
             if any(keyword in line.lower()
-                for keyword in ['experience', 'work experience', 'employment']) \
-                and len(line.split()) < 3:
+                   for keyword in ['experience', 'work experience', 'employment']) \
+                    and len(line.split()) < 3:
                 section_name = 'experience'
             elif any(keyword in line.lower() for keyword in ['skills']):
                 section_name = 'skills'
@@ -69,7 +69,8 @@ class Parser:
 
     def get_city(self, text):
         tags = self.tagger(text)
-        gpes = [x.entity for x in tags if x.label in ['GPE', 'LOC'] and x.entity != '']
+        gpes = [x.entity for x in tags if x.label in [
+            'GPE', 'LOC'] and x.entity != '']
 
         return gpes
 

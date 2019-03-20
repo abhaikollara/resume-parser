@@ -2,6 +2,7 @@ from collections import namedtuple
 
 Tag = namedtuple('EntityTag', ['entity', 'label'])
 
+
 class SpacyTagger:
 
     def __init__(self):
