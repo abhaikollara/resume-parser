@@ -25,6 +25,8 @@ pip install -r requirements.txt`
 ```
 python run.py myResume.pdf
 ```
+## Acknowledgement
+[BERT-NER implementation](https://github.com/kamalkraj/BERT-NER) by Kamalraj
 
 ## TODO:
  - ~Write a custom model for named entity recognition, currently using spacy.~
