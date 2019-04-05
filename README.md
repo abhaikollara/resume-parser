@@ -15,7 +15,7 @@ Then run
 ```
 git clone --recurse-submodules git@github.com:abhaikollara/resume-parser.git
 cd resume-parser
-pip install -r requirements.txt`
+pip install -r requirements.txt
 ```
 
 - Obtain the trained model from [here](http://bit.ly/2TSxl4Y)
